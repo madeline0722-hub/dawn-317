@@ -104,11 +104,14 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 
 /* ───────── 하단 유리 오버레이 (인벤토리 + 대사창) ───────── */
 #bottom{position:absolute;left:0;right:0;bottom:0;z-index:12;display:flex;flex-direction:column;
-  padding-top:34px;pointer-events:none;
-  background:linear-gradient(180deg,rgba(4,8,10,0) 0%,rgba(4,8,10,.55) 38%,rgba(4,8,10,.86) 62%,rgba(3,6,8,.95) 100%)}
+  padding-top:26px;pointer-events:none;
+  background:linear-gradient(180deg,rgba(4,8,10,0) 0%,rgba(4,8,10,.30) 42%,rgba(3,7,9,.72) 74%,rgba(3,6,8,.9) 100%)}
 #bottom>*{pointer-events:auto}
-#inventory{display:flex;gap:6px;padding:3px 14px 5px;overflow-x:auto;align-items:center;
-  min-height:38px;scrollbar-width:none}
+#inventory{display:flex;gap:6px;padding:8px 14px 7px;overflow-x:auto;align-items:center;
+  min-height:40px;scrollbar-width:none;
+  background:linear-gradient(180deg,rgba(6,12,14,.58),rgba(6,12,14,.44));
+  backdrop-filter:blur(9px) saturate(110%);-webkit-backdrop-filter:blur(9px) saturate(110%);
+  border-top:1px solid rgba(127,211,221,.12)}
 #inventory::-webkit-scrollbar{display:none}
 .inv-empty{font-size:10.5px;color:#5d757c;letter-spacing:.04em}
 .inv-item{display:flex;align-items:center;gap:5px;padding:6px 10px;border-radius:9px;
@@ -117,8 +120,11 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 .inv-item span.ic{font-size:13px;line-height:1}
 .inv-item:active{border-color:var(--acc)}
 
-#dialogue{display:flex;flex-direction:column;padding:0 14px calc(10px + env(safe-area-inset-bottom));
-  position:relative;max-height:46vh}
+#dialogue{display:flex;flex-direction:column;padding:9px 15px calc(12px + env(safe-area-inset-bottom));
+  position:relative;max-height:48vh;
+  background:linear-gradient(180deg,rgba(4,9,11,.62),rgba(3,7,9,.90));
+  backdrop-filter:blur(13px) saturate(115%);-webkit-backdrop-filter:blur(13px) saturate(115%);
+  box-shadow:inset 0 1px 0 rgba(127,211,221,.10)}
 #speaker{font-size:11px;font-weight:700;letter-spacing:.02em;color:var(--acc);margin-bottom:4px;min-height:14px;
   text-shadow:0 1px 8px rgba(0,0,0,.9)}
 #speaker.me{color:#9fb4ba;font-weight:600}
@@ -126,11 +132,11 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 #speaker.cop{color:#a9bdd2}
 #speaker.hint{color:#7fa8b0}
 #speaker.sys{color:#8fa4aa;letter-spacing:.12em;font-size:10px}
-#line{font-size:14px;line-height:1.68;color:#e7f1f3;letter-spacing:-.01em;white-space:pre-wrap;
+#line{font-size:14px;line-height:1.68;color:#f0f7f8;letter-spacing:-.01em;white-space:pre-wrap;
   overflow-y:auto;max-height:29vh;scrollbar-width:none;
   text-shadow:0 1px 10px rgba(0,0,0,.85)}
 #line::-webkit-scrollbar{display:none}
-#line.idle{color:#93a8ae}
+#line.idle{color:#b3c5ca}
 #dlgBtns{display:flex;flex-direction:column;gap:6px;margin-top:9px;max-height:30vh;overflow-y:auto;scrollbar-width:none}
 #dlgBtns::-webkit-scrollbar{display:none}
 .choice{width:100%;text-align:left;padding:11px 13px;border-radius:10px;border:1px solid rgba(43,65,72,.95);
@@ -906,7 +912,7 @@ function renderHs(){
       b.style.top  = p[1] + "%";
       b.style.animationDelay = (i * 45) + "ms";
       /* 화면 끝에서는 라벨이 잘리지 않도록 기준점을 바꿔 붙인다 */
-      var tx = p[0] < 16 ? 0 : (p[0] > 84 ? -100 : -50);
+      var tx = p[0] < 24 ? 0 : (p[0] > 76 ? -100 : -50);
       var ty = p[1] < 12 ? 0 : (p[1] > 86 ? -100 : -50);
       b.style.transform = "translate(" + tx + "%, " + ty + "%)";
       b.textContent = h.label;
@@ -1118,7 +1124,7 @@ s1:{
   },
   enter:introS1,
   hs:[
-    {id:"belt", label:"수술대 벨트", x:44, y:55, px:45, py:48, act:function(){
+    {id:"belt", label:"수술대 벨트", x:44, y:55, px:40, py:52, act:function(){
       if(S.flags.freed){
         say("나","잘라 낸 벨트가 수술대 아래로 축 늘어져 있다. 이제 이 방을 나갈 방법만 남았다.");
         return;
@@ -1136,7 +1142,7 @@ s1:{
         ["나","무엇이든 날카로운 것이 필요하다."]
       ]);
     }},
-    {id:"iv", label:"링거대", x:63, y:25, px:61, py:24, act:function(){
+    {id:"iv", label:"링거대", x:63, y:25, px:61, py:17, act:function(){
       if(S.flags.ivDone){
         say("나","링거대는 트레이 옆에 비스듬히 서 있다. 바퀴가 달려 있어 밀 만하다.");
         return;
@@ -1171,7 +1177,7 @@ s1:{
         }}
       ]});
     }},
-    {id:"chart", label:"진료 차트", x:60, y:44, px:66, py:46, act:function(){
+    {id:"chart", label:"진료 차트", x:63, y:44, px:68, py:43, act:function(){
       S.flags.chartSeen = true;
       sfx("paper");
       sayAll([
@@ -1182,7 +1188,7 @@ s1:{
       ]);
       clue("진료 차트","혈액형 B+, 수술 예정 03:30, 마취 펜토탈 4ml. 연필 메모 — '도어 코드 = 냉장고 LOT 번호'. 아래에 깔린 어제 자 차트.");
     }},
-    {id:"cabinet", label:"철제 캐비닛", x:78, y:26, px:76, py:24, act:function(){
+    {id:"cabinet", label:"철제 캐비닛", x:78, y:26, px:80, py:30, act:function(){
       if(needFreed()) return;
       if(has("flashlight")){ say("나","서랍은 비었다. 수술복만 누렇게 바랜 채 걸려 있다."); return; }
       sayAll([
