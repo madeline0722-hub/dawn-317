@@ -1735,11 +1735,7 @@ function ct(fn, ms){
   cineTimers.push(setTimeout(function(){ if(tok === cineTok){ fn(); } }, ms));
 }
 
-function cineFit(){
-  var w = stageW(), h = stageH();
-  if(w > 0 && h > 0) return (h > w * 1.08) ? "contain" : "cover";
-  return "cover";
-}
+function cineFit(){ return "cover"; }
 
 function playCine(shots, opts){
   cineTok++;
@@ -1758,6 +1754,7 @@ function showShot(){
   var s = CINE.shots[CINE.i];
   var img = $("cineImg");
   img.className = "";
+  img.style.objectPosition = s.pos || "50% 42%";
   img.src = IMG[s.img] || "";
   var self = img;
   ct(function(){ self.className = (s.move || "zin"); ct(function(){ self.classList.add("on"); }, 40); }, 20);
