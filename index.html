@@ -1186,7 +1186,7 @@ s1:{
         }}
       ]});
     }},
-    {id:"chart", label:"진료 차트", x:63, y:44, px:68, py:43, act:function(){
+    {id:"chart", label:"진료 차트", x:63, y:44, px:64, py:38, act:function(){
       S.flags.chartSeen = true;
       sfx("paper");
       sayAll([
@@ -1842,7 +1842,7 @@ function statsHtml(){
 function startFakeEnding(){
   S.flags.fakeEnd = true;
   playCine([
-    {img:"cut1_police", move:"zin", lines:[
+    {img:"cut1_police_L", move:"zin", lines:[
       {sp:"경찰관", tx:"자, 여기 앉아요. 손 떨리는 거 보니까 많이 놀랐나 봐요. 물 마시고.", dur:3600},
       {sp:"나", tx:"(컵이 손에서 떨린다. 물이 넘쳐 무릎에 떨어진다.)", dur:3000},
       {sp:"경찰관", tx:"천천히 말해요. 시간은 충분해요.", dur:3400},
@@ -1860,7 +1860,7 @@ function startFakeEnding(){
       {sp:"경찰관", tx:"조용히 해요. 다치는 건 당신이야.", vp:"경찰관_본색", dur:3400},
       {sp:"경찰관", tx:"이 사람 이름은 오늘 장부에 안 남아요. 그러니까, 조용히.", vp:"경찰관_본색", dur:4000}
     ]},
-    {img:"s1_room", move:"zout", lines:[
+    {img:"s1_room_L", move:"zout", lines:[
       {sp:"나", tx:"(다시, 차가운 천장. 형광등이 하나.)", dur:3000},
       {sp:"나", tx:"(벨트가 다시 조여진다. 이번엔 더 세게. 손목이 저리고, 손가락 끝이 움직이지 않는다.)", dur:4000},
       {sp:"나", tx:"(팔꿈치 안쪽이 차갑다. 차가운 것이 팔을 타고 올라온다. 손끝부터 감각이 지워진다.)", dur:4200},
@@ -1884,7 +1884,7 @@ function startTrueEnding(){
       {sp:"나", tx:"(버스가 창고 지대를 벗어난다. 낡은 지붕들이 뒤로 밀려난다.)", dur:3600},
       {sp:"나", tx:"(새벽 5시. 도로 위에 차가 한 대도 없다. 기사는 말이 없다.)", dur:3600}
     ]},
-    {img:"s1_room", move:"zin", lines:[
+    {img:"s1_room_L", move:"zin", lines:[
       {sp:"나", tx:"(팔꿈치 안쪽에 바늘 자국이 남아 있다. 손으로 누르면 아직 아프다.)", dur:3400},
       {sp:"나", tx:"(이름표가 붙은 아이스박스는, 아직 그 방에 있다.)", dur:3800}
     ]},
