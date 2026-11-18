@@ -1744,6 +1744,7 @@ function playCine(shots, opts){
   $("cine").hidden = false;
   $("cineEnd").hidden = true;
   $("cineEndBody").innerHTML = "";
+  var sw = $("cineSubWrap"); if(sw) sw.style.display = "";
   $("cineBar").firstChild.style.width = "0%";
   $("cineImg").style.objectFit = cineFit();
   showShot();
@@ -1794,6 +1795,7 @@ function finishCine(){
   if(!CINE) return;
   clearCineTimers();
   vStop();
+  var sw = $("cineSubWrap"); if(sw) sw.style.display = "none";
   var e = CINE.opts.ending || {};
   var shots = CINE.shots, opts = CINE.opts;
   $("cineBar").firstChild.style.width = "100%";
@@ -1820,7 +1822,11 @@ function finishCine(){
 }
 
 function skipCine(){ if(CINE) finishCine(); }
-function closeCine(){ clearCineTimers(); vStop(); $("cine").hidden = true; $("cineEnd").hidden = true; }
+function closeCine(){
+  clearCineTimers(); vStop();
+  $("cine").hidden = true; $("cineEnd").hidden = true;
+  var sw = $("cineSubWrap"); if(sw) sw.style.display = "";
+}
 
 function statsHtml(){
   var secs = Math.max(0, Math.round((Date.now() - (S.t0 || Date.now())) / 1000));
@@ -2227,6 +2233,7 @@ window.__ESCAPE = {
   skipCine: skipCine,
   restart: restart,
   sound: function(){ return AUD.on; },
+  audio: function(){ return {ctx: !!AUD.ctx, state: AUD.ctx ? AUD.ctx.state : null, amb: !!AUD.amb, hb: !!AUD.hb, on: AUD.on}; },
   voice: function(){ return VOICE.on; },
   toggleSound: toggleSound,
   toggleVoice: toggleVoice,
