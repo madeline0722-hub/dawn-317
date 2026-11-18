@@ -140,8 +140,8 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 #line.idle{color:#b3c5ca}
 #dlgBtns{display:flex;flex-direction:column;gap:6px;margin-top:9px;max-height:30vh;overflow-y:auto;scrollbar-width:none}
 #dlgBtns::-webkit-scrollbar{display:none}
-.choice{width:100%;text-align:left;padding:11px 13px;border-radius:10px;border:1px solid rgba(43,65,72,.95);
-  background:rgba(11,20,24,.93);font-size:12.5px;line-height:1.45;color:#d7e8ea;transition:background .15s,border-color .15s;
+.choice{width:100%;text-align:left;padding:11px 13px;border-radius:10px;border:1px solid rgba(66,98,108,.95);
+  background:rgba(19,33,39,.95);font-size:12.5px;line-height:1.45;color:#e6f3f5;transition:background .15s,border-color .15s;
   backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .choice:active{background:#16303a;border-color:var(--acc)}
 .choice i{display:inline-block;font-style:normal;color:var(--acc);margin-right:7px;font-size:11px}
@@ -1306,7 +1306,7 @@ s1f:{
         {label:"먼저 아이스박스부터 확인한다", fn:function(){ say("나","순서를 바꾼다. 천은 나중이다. …나중에 젖힐 수 있을까."); }}
       ]});
     }},
-    {id:"close", label:"냉장고 문 닫기", x:93, y:56, px:88, py:50, act:function(){
+    {id:"close", label:"냉장고 문 닫기", x:93, y:56, px:82, py:50, act:function(){
       sfx("fridge");
       say("나","문을 닫는다. 손끝이 아직 차갑다. 문이 닫히는 소리가 생각보다 크게 복도로 번진다.", {after:function(){
         tension(3);
