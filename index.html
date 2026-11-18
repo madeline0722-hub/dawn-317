@@ -2193,6 +2193,16 @@ function init(){
     if(sc.addEventListener) sc.addEventListener("touchmove", function(e){ if(DRAG.on && e.cancelable) e.preventDefault(); }, {passive:false});
   }
 
+  if(document.addEventListener){
+    document.addEventListener("visibilitychange", function(){
+      if(!document.hidden && AUD.on && AUD.ctx){
+        audInit();
+        ambStart();
+        if(!AUD.hb) hbStart();
+      }
+    });
+  }
+
   if(typeof window.addEventListener === "function"){
     window.addEventListener("resize", function(){ LAY.key=""; layoutScene(); });
     window.addEventListener("orientationchange", function(){ LAY.key=""; setTimeout(layoutScene, 220); });
